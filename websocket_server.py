@@ -13,14 +13,13 @@ async def handler(websocket):
     async for message in websocket:
         message_list = message.split("-|\\|-")
         if message.lower() == "ping":
-            print("pinged")
-            websocket.send("pong")
+            await websocket.send("pong")
         elif message_list[0] == "setKing":
             if message_list[1] != get_king():
                 set_king(message_list[1])
-                websocket.send("Already king")
+                await websocket.send("Already king")
             else:    
-                websocket.send("Success")
+                await websocket.send("Success")
 
 
 asyncio.run(main())
