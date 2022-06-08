@@ -1,11 +1,11 @@
 from ipaddress import ip_address
 from websockets import serve
-from utilities import get_king, set_king, get_websocket_info
+from utilities import get_king, set_king
 import asyncio
 
 
-async def main(address):
-    async with serve(handler, address[0], int(address[1])):
+async def main():
+    async with serve(handler, '139.177.192.47', 8008):
         await asyncio.Future()  # run forever
 
 
@@ -22,4 +22,4 @@ async def handler(websocket):
                 websocket.send("Success")
 
 
-asyncio.run(main(get_websocket_info()))
+asyncio.run(main())
