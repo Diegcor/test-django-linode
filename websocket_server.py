@@ -13,6 +13,7 @@ async def handler(websocket):
     async for message in websocket:
         message_list = message.split("-|\\|-")
         if message.lower() == "ping":
+            print("pinged")
             websocket.send("pong")
         elif message_list[0] == "setKing":
             if message_list[1] != get_king():
