@@ -17,9 +17,9 @@ async def handler(websocket):
         elif message_list[0] == "setKing":
             if message_list[1] != get_king():
                 set_king(message_list[1])
-                await websocket.send("Already king")
-            else:    
                 await websocket.send("Success")
+            else:    
+                await websocket.send("Already king")
 
 
 asyncio.run(main())
